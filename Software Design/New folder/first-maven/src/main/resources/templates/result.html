@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .result { max-width: 1200px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; background-color:#7fffd4 }
+    </style>
+</head>
+<body>
+<div class="result">
+    <h1>Results for: <span th:text="${name}"></span></h1>
+    <p><strong>JWT Token:</strong> <span th:text="${jwt}"></span></p>
+    <p><strong>Vowel Count of your Name:</strong> <span th:text="${vowelCount}"></span></p>
+    <a href="/">Go back</a>
+</div>
+</body>
+</html>
