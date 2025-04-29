@@ -9,32 +9,30 @@ import static org.mockito.Mockito.*;
 public class AuthManagerTest {
     private UserRepository repository;
     private AuthManager authManager;
+    String email = "test@example.com";
+    String password = "secret";
+    String hashed = "hashed-secret";
+
 
     @BeforeEach
     public void setUp() {
         repository = Mockito.mock(UserRepository.class);
         authManager = new AuthManager(repository);
-    }
 
-    @Test
-    public void testLoginSuccess() throws Exception {
-        String email = "test@example.com";
-        String password = "secret";
-        String hashed = "hashed-secret";
 
         User mockUser = new User(email, hashed);
 
         when(repository.findByEmail(email)).thenReturn(mockUser);
         when(repository.hashPassword(password)).thenReturn(hashed);
+    }
 
+    @Test
+    public void testLoginSuccess() throws Exception {
         assertTrue(authManager.login(email, password));
     }
 
     @Test
     public void testLoginWrongPassword() throws Exception {
-        String email = "test@example.com";
-        String password = "wrongpassword";
-        String hashed = "correct-hash";
 
         User mockUser = new User(email, hashed);
 
@@ -46,7 +44,6 @@ public class AuthManagerTest {
 
     @Test
     public void testLoginUserNotFound() {
-        String email = "notfound@example.com";
 
         when(repository.findByEmail(email)).thenReturn(null);
 
