@@ -37,5 +37,11 @@ public class UserController {
         return ResponseEntity.ok(userService.getUserDetails(id));
     }
 
+    @PostMapping("/users")
+    public ResponseEntity<String> createUser(@Valid @RequestBody UserRequest request) {
+        UUID userId = userService.createUser(request.getName(), request.getEmail());
+        return ResponseEntity.ok("User created with ID: " +userId);
+    }
+
     public record CreateUserRequest(@NotBlank String name, @Email String email) {}
 }
