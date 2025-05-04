@@ -59,31 +59,67 @@ exports.getLoansByUser = async (user_id) => {
 };
 
 exports.getOverdueLoans = async () => {
-  const [rows] = await db.execute(
-    `SELECT l.id, u.id as user_id, u.name, u.email,
-            b.id as book_id, b.title, b.author,
-            DATEDIFF(NOW(), l.due_date) as days_overdue
-     FROM loans l
-     JOIN users u ON l.user_id = u.id
-     JOIN books b ON l.book_id = b.id
-     WHERE l.status = 'ACTIVE' AND l.due_date < NOW()`
-  );
-  return rows.map((row) => ({
-    id: row.id,
+  // First, let's properly execute the main query to get overdue loans
+  const [loans] = await db.execute(`
+    SELECT 
+      l.id, 
+      l.issue_date, 
+      l.due_date,
+      u.id AS user_id, 
+      u.name AS user_name, 
+      u.email AS user_email,
+      b.id AS book_id, 
+      b.title AS book_title, 
+      b.author AS book_author,
+      DATEDIFF(CURRENT_DATE(), l.due_date) AS days_overdue
+    FROM loans l
+    JOIN users u ON l.user_id = u.id 
+    JOIN books b ON l.book_id = b.id
+    WHERE l.due_date < CURRENT_DATE() 
+    AND l.status = 'ACTIVE'
+  `);
+
+  console.log('Overdue loans found:', loans.length);
+  if (loans.length > 0) {
+    console.log('First overdue loan:', loans[0]);
+  }
+  
+  // If no overdue loans are found, let's check with simpler criteria for debugging
+  if (loans.length === 0) {
+    console.log('No loans found, checking with simpler criteria...');
+    const [simplifiedLoans] = await db.execute(`
+      SELECT * FROM loans 
+      WHERE due_date < CURDATE()
+      LIMIT 5
+    `);
+    console.log('Simplified query results:', JSON.stringify(simplifiedLoans, null, 2));
+    
+    // Also check for loans that are not returned
+    const [notReturnedLoans] = await db.execute(
+      "SELECT COUNT(*) as total FROM loans WHERE return_date IS NULL"
+    );
+    console.log('Loans not returned:', notReturnedLoans[0].total);
+  } else {
+    console.log('First loan found:', JSON.stringify(loans[0], null, 2));
+  }
+  
+  // Format the results to match the expected API structure
+  return loans.map(loan => ({
+    id: loan.id,
     user: {
-      id: row.user_id,
-      name: row.name,
-      email: row.email,
+      id: loan.user_id,
+      name: loan.user_name,
+      email: loan.user_email
     },
     book: {
-      id: row.book_id,
-      title: row.title,
-      author: row.author,
+      id: loan.book_id,
+      title: loan.book_title,
+      author: loan.book_author
     },
-    issue_date: row.issue_date,
-    due_date: row.due_date,
-    days_overdue: row.days_overdue,
-  }));
+    issue_date: loan.issue_date,
+    due_date: loan.due_date,
+    days_overdue: loan.days_overdue
+  }));
 };
 
 exports.extendLoan = async (loanId, extension_days) => {
@@ -125,8 +161,8 @@ exports.getActiveUsers = async () => {
      FROM users u
      JOIN loans l ON u.id = l.user_id
      GROUP BY u.id
-     ORDER BY books_borrowed DESC
-     LIMIT 5`
+     HAVING current_borrows > 0
+     ORDER BY books_borrowed DESC`
   );
   return rows;
 };

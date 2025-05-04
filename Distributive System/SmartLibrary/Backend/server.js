@@ -1,5 +1,6 @@
 const express = require("express");
 require('dotenv').config();
+const mysql = require("mysql2/promise");
 const app = express();
 const userRoutes = require("./routes/userRoutes");
 const bookRoutes = require("./routes/bookRoutes");

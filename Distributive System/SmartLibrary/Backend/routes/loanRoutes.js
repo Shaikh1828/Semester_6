@@ -4,8 +4,8 @@ const loanController = require("../controllers/loanController");
 
 router.post("/loans", loanController.issueLoan);
 router.post("/returns", loanController.returnLoan);
-router.get("/loans/:user_id", loanController.getLoansByUser);
 router.get("/loans/overdue", loanController.getOverdueLoans);
+router.get("/loans/:user_id", loanController.getLoansByUser);
 router.put("/loans/:id/extend", loanController.extendLoan);
 
 // Stats

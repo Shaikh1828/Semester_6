@@ -36,12 +36,23 @@ exports.getLoansByUser = async (req, res) => {
 exports.getOverdueLoans = async (req, res) => {
   try {
     const overdueLoans = await LoanModel.getOverdueLoans();
+    console.log(`Retrieved ${overdueLoans.length} overdue loans`);
+    
+    if (overdueLoans.length === 0) {
+      console.log('No overdue loans found. Let\'s check database structure...');
+    }
+    
     res.json(overdueLoans);
   } catch (error) {
     console.error("Error fetching overdue loans:", error);
-    res.status(500).json({ message: "Failed to fetch overdue loans" });
+    res.status(500).json({ 
+      message: "Failed to fetch overdue loans",
+      error: error.message 
+    });
   }
 };
+
+
 
 exports.extendLoan = async (req, res) => {
   try {

@@ -17,12 +17,15 @@ exports.getBookById = async (id) => {
 };
 
 exports.searchBooks = async (search) => {
+  const term = `%${search.toLowerCase()}%`;
   const [rows] = await db.execute(
-    `SELECT * FROM books WHERE title LIKE ? OR author LIKE ?`,
-    [`%${search}%`, `%${search}%`]
+    `SELECT * FROM books 
+     WHERE LOWER(title) LIKE ? OR LOWER(author) LIKE ?`,
+    [term, term]
   );
   return rows;
 };
+
 
 exports.updateBook = async (id, updates) => {
   const { copies, available_copies } = updates;
