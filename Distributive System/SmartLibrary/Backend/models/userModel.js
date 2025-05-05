@@ -15,3 +15,22 @@ exports.getUserById = async (id) => {
   );
   return rows[0];
 };
+
+exports.isValidUser = async (user_id) => {
+  const [rows] = await db.execute("SELECT id FROM users WHERE id = ?", [user_id]);
+  return rows.length > 0;
+};
+
+exports.updateUser = async (id, userData) => {
+  const { name, email, role } = userData;
+  const [result] = await db.execute(
+    "UPDATE users SET name = ?, email = ?, role = ? WHERE id = ?",
+    [name, email, role, id]
+  );
+  if (result.affectedRows === 0) {
+    return null; 
+  }
+
+  const [rows] = await db.execute("SELECT * FROM users WHERE id = ?", [id]);
+  return rows[0];
+};

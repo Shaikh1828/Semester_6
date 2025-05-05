@@ -24,3 +24,19 @@ exports.getUserById = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch user" });
   }
 };
+
+exports.updateUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const updatedUser = await UserModel.updateUser(userId, req.body);
+    
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found or not updated" });
+    }
+
+    res.json(updatedUser);
+  } catch (error) {
+    console.error("Error updating user:", error);
+    res.status(500).json({ message: "Failed to update user" });
+  }
+};

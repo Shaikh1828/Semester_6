@@ -1,14 +1,28 @@
 const LoanModel = require("../models/loanModel");
+const userModel = require("../models/userModel");
+const bookModel = require("../models/bookModel");
 
 exports.issueLoan = async (req, res) => {
   try {
     const { user_id, book_id, due_date } = req.body;
+
+    const isUserValid = await userModel.isValidUser(user_id);
+    const isBookAvailable = await bookModel.isBookAvailable(book_id);
+
+    if (!isUserValid) {
+      return res.status(400).json({ message: "Invalid user." });
+    }
+
+    if (!isBookAvailable) {
+      return res.status(400).json({ message: "Book not available." });
+    }
+
     const loan = await LoanModel.issueLoan({ user_id, book_id, due_date });
     res.status(201).json(loan);
   } catch (error) {
     console.error("Error issuing loan:", error);
-    res.status(500).json({ message: "Failed to issue loan" });
-  }
+    res.status(500).json({ message: "Failed to issue loan" });
+  }
 };
 
 exports.returnLoan = async (req, res) => {

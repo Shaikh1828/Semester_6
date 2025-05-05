@@ -26,6 +26,13 @@ exports.searchBooks = async (search) => {
   return rows;
 };
 
+exports.isBookAvailable = async (book_id) => {
+  const [rows] = await db.execute(
+    "SELECT available_copies FROM books WHERE id = ? AND available_copies > 0",
+    [book_id]
+  );
+  return rows.length > 0;
+};
 
 exports.updateBook = async (id, updates) => {
   const { copies, available_copies } = updates;
