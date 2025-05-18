@@ -1,0 +1,88 @@
+{
+  "id": "032730d4-ba14-4896-a65f-db52c1c97bcd",
+  "version": "2.0",
+  "name": "Phoenix",
+  "url": "http://localhost:4000/sign_in",
+  "tests": [{
+    "id": "b3b67d9d-d2bc-4a27-855d-a6b6776bcab2",
+    "name": "Selenium",
+    "commands": [{
+      "id": "17eff87f-9c21-4ab8-8618-a6ecc5bc4f22",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:4000/sign_in",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cbdadae3-7876-4a99-bdb3-68d97670bac3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x692",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5f5f2ea7-6540-45eb-8436-366b1bf187dc",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='sign_in_form']/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Sign in')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4b0388c6-a5c1-41ce-867c-370f00251103",
+      "comment": "",
+      "command": "click",
+      "target": "id=add_new_board",
+      "targets": [
+        ["id=add_new_board", "id"],
+        ["linkText=Add new board...", "linkText"],
+        ["css=#add_new_board", "css:finder"],
+        ["xpath=//a[contains(text(),'Add new board...')]", "xpath:link"],
+        ["xpath=//a[@id='add_new_board']", "xpath:attributes"],
+        ["xpath=//div[@id='authentication_container']/div/div/section/div/div/div/a", "xpath:idRelative"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Add new board...')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5446b00f-bc37-42ac-9786-3428dcd42d51",
+      "comment": "",
+      "command": "click",
+      "target": "css=h3 > span",
+      "targets": [
+        ["css=h3 > span", "css:finder"],
+        ["xpath=//div[@id='authentication_container']/div/div/section/header/h3/span", "xpath:idRelative"],
+        ["xpath=//h3/span", "xpath:position"],
+        ["xpath=//span[contains(.,' My boards')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ae610292-bdf7-4554-a536-b13a5d829772",
+      "comment": "",
+      "command": "click",
+      "target": "css=#boards_nav span",
+      "targets": [
+        ["css=#boards_nav span", "css:finder"],
+        ["xpath=//nav[@id='boards_nav']/ul/li/a/span", "xpath:idRelative"],
+        ["xpath=//span", "xpath:position"],
+        ["xpath=//span[contains(.,' Boards')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "d83626ac-c795-4d7d-b829-b439d858838b",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["b3b67d9d-d2bc-4a27-855d-a6b6776bcab2"]
+  }],
+  "urls": [],
+  "plugins": []
+}

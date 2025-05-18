@@ -5,16 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6433dffb-33b2-4ef5-8a77-c8efbb836e0e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/usermanagement/infrastructure/controller/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/usermanagement/infrastructure/controller/UserRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/usermanagement/application/RoleServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/usermanagement/application/UserServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/usermanagement/infrastructure/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/usermanagement/infrastructure/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/MockitoTest/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/MockitoTest/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/MockitoTest/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/MockitoTest/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/MockitoTest/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/MockitoTest/src/main/java/AuthManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/MockitoTest/src/main/java/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/MockitoTest/src/main/java/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/MockitoTest/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/MockitoTest/src/test/java/AuthManagerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/.idea/libraries/junit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/src/main/java/MyClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/src/main/java/io/FileIO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/src/main/java/math/ArithmeticOperations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/src/main/java/math/ArrayOperations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/src/main/java/math/MyMath.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/src/test/java/MyClassTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/src/test/java/io/FileIOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/src/test/java/math/ArithmeticOperationsTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/src/test/java/math/ArrayOperationsTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/src/test/java/math/MyMathTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/src/test/resources/empty_file.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/src/test/resources/grades_invalid.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/src/test/resources/grades_valid.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/target/classes/MyClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/target/classes/io/FileIO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/target/classes/math/ArithmeticOperations.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/target/classes/math/ArrayOperations.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/target/classes/math/MyMath.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/target/test-classes/MyClassTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/target/test-classes/empty_file.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/target/test-classes/grades_invalid.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/target/test-classes/grades_valid.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/target/test-classes/io/FileIOTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/target/test-classes/math/ArithmeticOperationsTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/target/test-classes/math/ArrayOperationsTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Software Testing/unittesting/target/test-classes/math/MyMathTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,35 +79,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "JUnit.RoleServiceTest.executor": "Run",
-    "JUnit.UserServiceTest.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.UserManagementApplication.executor": "Run",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;JUnit.RoleServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.UserManagementApplication.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Git\Semester_6\Software Design\user-management-clean-architecture\src\main\java\com\example\usermanagement\infrastructure\controller" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.example.usermanagement.application" />
@@ -142,6 +180,8 @@
       <workItem from="1745955619647" duration="2249000" />
       <workItem from="1746293217443" duration="2608000" />
       <workItem from="1746345674250" duration="9589000" />
+      <workItem from="1747157087668" duration="31000" />
+      <workItem from="1747170661997" duration="39000" />
     </task>
     <servers />
   </component>
