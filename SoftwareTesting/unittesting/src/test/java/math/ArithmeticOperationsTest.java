@@ -55,6 +55,30 @@ public class ArithmeticOperationsTest {
         assertEquals(expected, actual);
     }
 
+    @org.junit.Test
+    public void testMultiplyWithMaxBoundary() {
+        int y = 2;
+        int x = Integer.MAX_VALUE / y;  // This is the maximum value x can be
+        int expected = x * y;
+        int actual = new ArithmeticOperations().multiply(x, y);
+        assertEquals(expected, actual);
+    }
+
+    @org.junit.Test(expected = IllegalArgumentException.class)
+    public void testMultiplyExceedingMaxBoundary() {
+        int y = 2;
+        int x = Integer.MAX_VALUE / y + 1;
+        new ArithmeticOperations().multiply(x, y);  // Should throw
+    }
+
+    @org.junit.Test
+    public void testDivideFloatingPointPrecision() {
+        double expected = 3.333;
+        double actual = new ArithmeticOperations().divide(10, 3);
+        assertEquals(expected, actual, 1e-3);
+    }
+
+
 //    @org.junit.Test(expected = NullPointerException.class)
 //    public void testMultiplyWithNullX() {
 //        new ArithmeticOperations().multiply(null, 5);

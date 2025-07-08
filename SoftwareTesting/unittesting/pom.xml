@@ -81,6 +81,37 @@
 					<argLine>${argLine}</argLine> <!-- ✅ Correct way -->
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>1.15.0</version>
+				<configuration>
+<!--					<targetClasses>-->
+<!--						<param>gr.aueb.dmst.pandeliskirpoglou.*</param> &lt;!&ndash; Update with your actual package &ndash;&gt;-->
+<!--					</targetClasses>-->
+					<targetClasses>
+						<param>io.*</param>
+						<param>math.*</param>
+					</targetClasses>
+
+
+					<targetTests>
+<!--						<param>gr.aueb.dmst.pandeliskirpoglou.*</param>-->
+						<param>io.*</param>
+						<param>math.*</param>
+					</targetTests>
+					<mutators>
+						<mutator>STRONGER</mutator>
+					</mutators>
+					<outputFormats>
+						<outputFormat>HTML</outputFormat>
+						<outputFormat>XML</outputFormat>
+					</outputFormats>
+					<verbose>true</verbose>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 

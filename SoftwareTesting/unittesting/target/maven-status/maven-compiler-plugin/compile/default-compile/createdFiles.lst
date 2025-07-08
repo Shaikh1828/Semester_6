@@ -1,4 +1,4 @@
-io\FileIO.class
-math\ArrayOperations.class
-math\MyMath.class
-math\ArithmeticOperations.class
+math/MyMath.class
+io/FileIO.class
+math/ArithmeticOperations.class
+math/ArrayOperations.class
