@@ -34,6 +34,11 @@ exports.isBookAvailable = async (book_id) => {
   return rows.length > 0;
 };
 
+exports.isValidBook = async (id) => {
+  const [rows] = await db.execute("SELECT id FROM books WHERE id = ?", [id]);
+  return rows.length > 0;
+};
+
 exports.updateBook = async (id, updates) => {
   const { copies, available_copies } = updates;
   await db.execute(

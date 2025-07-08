@@ -28,8 +28,17 @@ exports.issueLoan = async (req, res) => {
 exports.returnLoan = async (req, res) => {
   try {
     const { loan_id } = req.body;
-    const loan = await LoanModel.returnLoan(loan_id);
-    res.json(loan);
+    const loan = await LoanModel.getLoanById(loan_id);
+    if (!loan) {
+      return res.status(404).json({ message: "Loan not found" });
+    }
+    const isValid = await bookModel.isValidBook(loan.book_id);
+    if (!isValid) {
+      return res.status(400).json({ message: "Invalid book ID associated with loan" });
+    }
+    const returnedLoan = await LoanModel.returnLoan(loan_id);
+    res.json(returnedLoan);
+
   } catch (error) {
     console.error("Error returning loan:", error);
     res.status(500).json({ message: "Failed to return loan" });

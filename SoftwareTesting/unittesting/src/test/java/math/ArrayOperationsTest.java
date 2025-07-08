@@ -19,7 +19,7 @@ public class ArrayOperationsTest {
 
     @org.junit.Test
     public void testFindPrimesInFile() {
-        // Arrange
+
         FileIO mockFileIO = mock(FileIO.class);
         MyMath mockMyMath = mock(MyMath.class);
         ArrayOperations operations = new ArrayOperations();
@@ -35,10 +35,10 @@ public class ArrayOperationsTest {
         when(mockMyMath.isPrime(6)).thenReturn(false);
         when(mockMyMath.isPrime(7)).thenReturn(true);
 
-        // Act
+
         int[] result = operations.findPrimesInFile(mockFileIO, dummyPath, mockMyMath);
 
-        // Assert
+
         int[] expected = {2, 5, 7};
         assertArrayEquals(expected, result);
     }

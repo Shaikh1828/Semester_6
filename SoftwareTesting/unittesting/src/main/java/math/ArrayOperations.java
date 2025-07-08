@@ -26,11 +26,14 @@ public class ArrayOperations {
 	 * @return arrayOfPrimeNumbers the array of prime numbers that where in the file
 	 */
 
-	public int[] findPrimesInFile(FileIO fileio, String filepath, MyMath myMath) {
+	public int[] findPrimesInFile(FileIO fileio, String filepath, MyMath myMath)
+	{
 		int[] arrayOfNumbers = fileio.readFile(filepath);
 		List<Integer> arrayOfPrimeNumbers = new ArrayList<>();
-		for (int i = 0; i < arrayOfNumbers.length; i++) {
-			if (myMath.isPrime(arrayOfNumbers[i])) {
+		for (int i = 0; i < arrayOfNumbers.length; i++)
+		{
+			if (myMath.isPrime(arrayOfNumbers[i]))
+			{
 				arrayOfPrimeNumbers.add(arrayOfNumbers[i]);
 			}
 		}

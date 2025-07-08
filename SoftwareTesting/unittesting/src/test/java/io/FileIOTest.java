@@ -1,30 +1,21 @@
 package io;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.URISyntaxException;
+import static org.junit.Assert.*;
 import java.net.URL;
 import java.nio.file.Paths;
 
-import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FileIOTest {
-    private FileIO fileIO;
-    @Before
+
+    @org.junit.Before
     public void setUp() throws Exception {
     }
 
-    @After
+    @org.junit.After
     public void tearDown() throws Exception {
     }
 
-    @Test
+    @org.junit.Test
     public void testReadFileWithValidContent() throws Exception{
         FileIO fileIO = new FileIO();
         URL resourceUrl = getClass().getClassLoader().getResource("grades_valid.txt");
@@ -36,34 +27,45 @@ public class FileIOTest {
         int[] expected = {3, 9, 0, 2, 10, 9, 3, 8, 0, 3};
         assertArrayEquals(expected, result);
     }
-
-
-    @Test
+    @org.junit.Test
     public void testReadFileWithInvalidContent() throws Exception {
         FileIO fileIO = new FileIO();
         URL resourceUrl = getClass().getClassLoader().getResource("grades_invalid.txt");
         assertNotNull("File not found", resourceUrl);
         String path = Paths.get(resourceUrl.toURI()).toString();
         int[] result = fileIO.readFile(path);
-
-        // Should only return valid integers, skipping "a", "9.42", "b"
         int[] expected = {3, 9, 2, 10, 8, 0, 3};
         assertArrayEquals(expected, result);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @org.junit.Test(expected = IllegalArgumentException.class)
     public void testReadEmptyFileThrowsException() throws Exception {
         FileIO fileIO = new FileIO();
         URL resourceUrl = getClass().getClassLoader().getResource("empty_file.txt");
+
         assertNotNull("File not found", resourceUrl);
         String path = Paths.get(resourceUrl.toURI()).toString();
+
         fileIO.readFile(path);
     }
-
-    @Test(expected = IllegalArgumentException.class)
+    @org.junit.Test(expected = IllegalArgumentException.class)
     public void testReadFileDoesNotExistThrowsException() {
         FileIO fileIO = new FileIO();
         fileIO.readFile("non_existent_file.txt");
+    }
+    @org.junit.Test
+    public void testIOExceptionFromUnreadableFile() throws Exception {
+        java.io.File tempFile = java.io.File.createTempFile("unreadable", ".txt");
+        tempFile.setReadable(false); // Might not work on all OS
+        tempFile.deleteOnExit();
+
+        FileIO fileIO = new FileIO();
+
+        try {
+            fileIO.readFile(tempFile.getAbsolutePath());
+        } catch (IllegalArgumentException e) {
+            // Expected due to empty or unreadable
+        }
     }
 
 

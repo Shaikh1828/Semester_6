@@ -8,6 +8,7 @@ package math;
  * @version 1.0
  * @since 2020-04-06
  */
+
 public class ArithmeticOperations {
 
 	/**
@@ -18,6 +19,7 @@ public class ArithmeticOperations {
 	 * @return the result of the division between numerator and denominator
 	 * @exception ArithmeticException when denominator is zero
 	 */
+
 	public double divide(double numerator, double denominator) {
 		if (denominator == 0)
 			throw new ArithmeticException("Cannot divide with zero");
@@ -37,7 +39,9 @@ public class ArithmeticOperations {
 	 * @exception IllegalArgumentException when the product does not fit in an
 	 *                                     Integer variable
 	 */
-	public int multiply(int x, int y) {
+
+	public int multiply(int x, int y)
+	{
 		if (x < 0 || y < 0) {
 			throw new IllegalArgumentException("x & y should be >= 0");
 		} else if (y == 0) {

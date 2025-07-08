@@ -1,48 +1,64 @@
 package math;
 
-import org.junit.After;
-import org.junit.Before;
-//import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class MyMathTest {
-    MyMath check = new MyMath();
 
-    @Before
+    @org.junit.Before
     public void setUp() throws Exception {
     }
 
-    @After
+    @org.junit.After
     public void tearDown() throws Exception {
     }
 
     @org.junit.Test
-    public void factorialCheck() {
-        int expected = 120;
-        int actual = check.factorial(5);
+    public void factorial()
+    {
+        int expected = 24;
+        int actual = (new MyMath()).factorial(4);
+        assertEquals(expected, actual);
+    }
+    @org.junit.Test(expected = IllegalArgumentException.class)
+    public void factorialNegative() {
+        (new MyMath()).factorial(-1);
+    }
+    @org.junit.Test(expected = IllegalArgumentException.class)
+    public void factorialgaterTwelve(){
+        (new MyMath()).factorial(13);
+    }
+    @org.junit.Test
+    public void isPrime() {
+        boolean expected = true;
+        boolean actual = new MyMath().isPrime(5);
+        assertEquals(expected, actual);
+    }
+    @org.junit.Test(expected = IllegalArgumentException.class)
+    public void  invalidInput() {
+        (new MyMath()).factorial(-1);
+    }
+    @org.junit.Test(expected = IllegalArgumentException.class)
+    public void isPrimeInvalidInput() {
+        new MyMath().isPrime(1); // This will trigger the line with the exception
+    }
+
+    @org.junit.Test
+    public void isNotPrime() {
+        boolean expected = false;
+        boolean actual = new MyMath().isPrime(6);  // 6 is divisible by 2
+        assertEquals(expected, actual);
+    }
+    @org.junit.Test
+    public void isPrimeTwo() {
+        boolean expected = true;
+        boolean actual = new MyMath().isPrime(2);
+        assertEquals(expected, actual);
+    }
+    @org.junit.Test
+    public void isNotPrimeOdd() {
+        boolean expected = false;
+        boolean actual = new MyMath().isPrime(9);  // 9 is divisible by 3
         assertEquals(expected, actual);
     }
 
-    @org.junit.Test(expected = IllegalArgumentException.class)
-    public void invalidNegInputCheck() {
-        check.factorial(-5);
-    }
-
-    @org.junit.Test(expected = IllegalArgumentException.class)
-    public void invalidGreaterInputCheck() {
-        check.factorial(15);
-    }
-
-
-    @org.junit.Test
-    public void isPrimeCheck() {
-        boolean expected = true;
-        boolean actual = check.isPrime(13);
-    }
-
-    @org.junit.Test(expected = IllegalArgumentException.class)
-    public void invalidPrimeInputCheck() {
-        check.isPrime(-5);
-    }
 }

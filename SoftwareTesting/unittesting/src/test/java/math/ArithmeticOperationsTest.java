@@ -1,61 +1,63 @@
 package math;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ArithmeticOperationsTest {
-    ArithmeticOperations check = new ArithmeticOperations();
-    @Before
+
+    @org.junit.Before
     public void setUp() throws Exception {
     }
 
-    @After
+    @org.junit.After
     public void tearDown() throws Exception {
     }
 
-    @Test
-    public void divideCheck() {
+    @org.junit.Test
+    public void divide() {
         double expected = 2.0;
-        double actual = check.divide(10,5);
-        assertEquals(expected,actual,1e-3);
+        double actual = (new ArithmeticOperations()).divide(10, 5);
+        assertEquals(expected, actual, 1e-3);
     }
 
-    @Test(expected = ArithmeticException.class)
-    public void divided_by_zero_exception(){
-        check.divide(10,0);
+    @org.junit.Test(expected =  ArithmeticException.class)
+    public void dividebyzero(){
+        (new ArithmeticOperations()).divide(8, 0);
     }
 
-
-    @Test
-    public void multiplyByPos() {
-        int expected = 27;
-        int actual = check.multiply(3,9);
+    @org.junit.Test
+    public void multiplywithPositiveNumber() {
+        int expected = 20;
+        int actual = (new ArithmeticOperations()).multiply(4,5);
         assertEquals(expected,actual);
     }
-
-    @Test
-    public void testMultiplyWithNegativeX() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            check.multiply(-1, 5);
-        });
-        assertEquals("x & y should be >= 0", exception.getMessage());
+    @org.junit.Test
+    public void testMultiplyWithZero() {
+        int expected = 0;
+        int actual = (new ArithmeticOperations()).multiply(0,9);
+        assertEquals(expected,actual);
+    }
+    @org.junit.Test(expected = IllegalArgumentException.class)
+    public void testMultiplyWithNegativeXThrowsException() {
+        (new ArithmeticOperations()).multiply(-5, 10);
+    }
+    @org.junit.Test(expected = IllegalArgumentException.class)
+    public void testMultiplyWithNegativeYThrowsException() {
+        (new ArithmeticOperations()).multiply(5, -10);
+    }
+    @org.junit.Test(expected = IllegalArgumentException.class)
+    public void testwithoverflowException() {
+        (new ArithmeticOperations()).multiply(Integer.MAX_VALUE, 2);
+    }
+    @org.junit.Test
+    public void testMultiplyWhenYIsZero() {
+        int expected = 0;
+        int actual = new ArithmeticOperations().multiply(9, 0);
+        assertEquals(expected, actual);
     }
 
-    @Test
-    public void testMultiplyWithNegativeY() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            check.multiply(5, -1);
-        });
-        assertEquals("x & y should be >= 0", exception.getMessage());
-    }
+//    @org.junit.Test(expected = NullPointerException.class)
+//    public void testMultiplyWithNullX() {
+//        new ArithmeticOperations().multiply(null, 5);
+//    }
 
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testMultiplyWithOverflow() {
-            check.multiply(Integer.MAX_VALUE, 2);
-    }
 }

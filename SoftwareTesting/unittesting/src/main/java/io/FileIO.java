@@ -16,6 +16,7 @@ import java.util.List;
  * @version 1.0
  * @since 2020-04-06
  */
+
 public class FileIO {
 
 	/**
@@ -28,7 +29,9 @@ public class FileIO {
 	 * @exception NumberFormatException for checking invalid entries
 	 * @exception IOException when an IO interruption occurs (not required to be tested)
 	 */ 
-	public int[] readFile(String filepath) {
+
+	public int[] readFile(String filepath)
+	{
 		File file = new File(filepath);
 		if (!file.exists()) 
 			throw new IllegalArgumentException("Input file does not exist");
@@ -46,7 +49,8 @@ public class FileIO {
 					// Do nothing will skip the the current invalid line
 				}
 			}
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 		
@@ -56,5 +60,6 @@ public class FileIO {
 		// Convert a List to an array using 
 		return numbersList.stream().mapToInt(i -> i).toArray();
 	}
+
 
 }

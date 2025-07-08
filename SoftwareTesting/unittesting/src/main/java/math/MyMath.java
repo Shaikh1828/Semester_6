@@ -16,14 +16,17 @@ public class MyMath {
 	 * 
 	 * @param n the number of which we want the factorial
 	 * @return fact the factorial of the number n
-	 * @exception IllegalArgumentException when inputs n < 0 and n > 12
+	 * @exception IllegalArgumentException when inputs n < 0 or n > 12
 	 */
 
-	public int factorial(int n) {
+	public int factorial(int n)
+	{
 		int fact = 1;
-		if (n < 0 || n > 12) {
-			throw new IllegalArgumentException("Number should be 0 or above and 12 or below");
-		} else {
+		if (n < 0 || n > 12)
+		{
+			throw new IllegalArgumentException("number should be 0 or above and 12 or below");
+		} else
+		{
 			for (int i = 1; i <= n; i++) {
 				fact = fact * i;
 			}
