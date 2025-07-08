@@ -11,11 +11,12 @@
 	<description>This is a module for testing basic arithmetic operations</description>
 
 	<properties>
-		<maven.compiler.source>21</maven.compiler.source>
-		<maven.compiler.target>21</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+
 
 	<dependencies>
 		<!-- JUnit 4 for testing -->
@@ -49,9 +50,20 @@
 			<version>2.4.2</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.github.stefanbirkner</groupId>
+			<artifactId>system-rules</artifactId>
+			<version>1.19.0</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
 		<plugins>
 			<plugin>
 				<groupId>org.jacoco</groupId>
@@ -85,33 +97,31 @@
 			<plugin>
 				<groupId>org.pitest</groupId>
 				<artifactId>pitest-maven</artifactId>
-				<version>1.15.0</version>
+				<version>1.15.0</version> <!-- Use latest -->
 				<configuration>
 <!--					<targetClasses>-->
-<!--						<param>gr.aueb.dmst.pandeliskirpoglou.*</param> &lt;!&ndash; Update with your actual package &ndash;&gt;-->
+<!--						<param>io.*</param>-->
 <!--					</targetClasses>-->
+<!--					<targetTests>-->
+<!--						<param>io.*</param>-->
+<!--					</targetTests>-->
 					<targetClasses>
 						<param>io.*</param>
 						<param>math.*</param>
 					</targetClasses>
-
-
 					<targetTests>
-<!--						<param>gr.aueb.dmst.pandeliskirpoglou.*</param>-->
 						<param>io.*</param>
 						<param>math.*</param>
 					</targetTests>
-					<mutators>
-						<mutator>STRONGER</mutator>
-					</mutators>
 					<outputFormats>
-						<outputFormat>HTML</outputFormat>
-						<outputFormat>XML</outputFormat>
+						<param>HTML</param>
 					</outputFormats>
-					<verbose>true</verbose>
+					<excludedMethods>
+						<param>println</param>
+						<param>printStackTrace</param>
+					</excludedMethods>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
 
