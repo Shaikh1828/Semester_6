@@ -155,6 +155,25 @@ public class MyMathTest {
         assertFalse(new MyMath().isPrime(49));
     }
 
+    @org.junit.Test
+    public void testFactorialZero() {
+        assertEquals(1, new MyMath().factorial(0)); // 0! = 1
+    }
+
+    @org.junit.Test
+    public void testIsNotPrimeWithDivisorAtHalf() {
+        assertFalse("98 is not prime, divisible by 49", new MyMath().isPrime(98));
+    }
+
+    @org.junit.Test
+    public void testIsPrimeSmallPrime() {
+        assertTrue(new MyMath().isPrime(3));
+    }
+
+    @org.junit.Test
+    public void testIsNotPrimeFour() {
+        assertFalse(new MyMath().isPrime(4));
+    }
 
 
 }

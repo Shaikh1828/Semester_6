@@ -19,6 +19,10 @@ import java.util.List;
 
 public class FileIO {
 
+//	protected BufferedReader createReader(File file) throws IOException {
+//		return new BufferedReader(new FileReader(file));
+//	}
+
 	/**
 	 * Reads a file that contains numbers line by line
 	 * and returns an array of the integers found in the file.
@@ -29,6 +33,7 @@ public class FileIO {
 	 * @exception NumberFormatException for checking invalid entries
 	 * @exception IOException when an IO interruption occurs (not required to be tested)
 	 */
+
 
 	public int[] readFile(String filepath)
 	{
@@ -54,7 +59,7 @@ public class FileIO {
 				}
 			}
 		} catch (IOException e) {
-			System.out.println("==> IOException occurred");
+//			System.out.println("==> IOException occurred");
 			e.printStackTrace();
 		}
 

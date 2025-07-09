@@ -208,10 +208,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.contrib.java.lang.system.SystemOutRule;
+import org.junit.contrib.java.lang.system.SystemErrRule;
+
+
 
 public class FileIOTest {
     @Rule
-    public SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+    public final SystemErrRule systemErrRule = new SystemErrRule().enableLog();
+    @Rule
+    public final SystemOutRule systemOutRule = new SystemOutRule()
+            .enableLog();  // 👈 KEY PART
+
 
     @Before
     public void setUp() throws Exception {
@@ -316,4 +326,63 @@ public class FileIOTest {
         int[] result = fileIO.readFile(tempFile.getAbsolutePath());
         assertArrayEquals(new int[]{42}, result);
     }
+
+    @Test
+    public void testReadFileLogsInputPath() throws Exception {
+        File tempFile = File.createTempFile("logtest", ".txt");
+        tempFile.deleteOnExit();
+        try (FileWriter writer = new FileWriter(tempFile)) {
+            writer.write("1\n");
+        }
+
+        FileIO fileIO = new FileIO();
+        fileIO.readFile(tempFile.getAbsolutePath());
+
+        assertTrue(systemOutRule.getLog().contains("==> readFile called with: " + tempFile.getAbsolutePath()));
+    }
+
+    @Test
+    public void testOnlyInvalidLinesPrintsEmptyMessage() throws Exception {
+        FileIO fileIO = new FileIO();
+        URL resourceUrl = getClass().getClassLoader().getResource("only_invalid.txt");
+        assertNotNull(resourceUrl);
+        String path = Paths.get(resourceUrl.toURI()).toString();
+
+        try {
+            fileIO.readFile(path);
+            fail("Expected IllegalArgumentException");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Given file is empty", e.getMessage());
+            assertTrue(systemOutRule.getLog().contains("==> File was empty"));
+        }
+    }
+
+    @Test
+    public void testIOExceptionDuringRead() throws Exception {
+        File tempFile = File.createTempFile("test_io_exception", ".txt");
+        tempFile.deleteOnExit();
+        try (FileWriter writer = new FileWriter(tempFile)) {
+            writer.write("123");
+        }
+
+        // Try to simulate IOException by removing read permission (Linux/macOS)
+        tempFile.setReadable(false, false);
+
+        FileIO fileIO = new FileIO();
+
+        try {
+            fileIO.readFile(tempFile.getAbsolutePath());
+            fail("Expected IllegalArgumentException due to IOException");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Given file is empty", e.getMessage());
+
+            // ✅ Confirm printStackTrace() ran (error was printed)
+            assertTrue(systemErrRule.getLog().contains("java.io.FileNotFoundException") ||
+                    systemErrRule.getLog().contains("java.io.IOException"));
+        } finally {
+            tempFile.setReadable(true, false);  // Restore permission
+        }
+    }
+
+
 }
