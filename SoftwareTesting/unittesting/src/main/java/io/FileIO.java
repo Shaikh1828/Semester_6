@@ -59,8 +59,9 @@ public class FileIO {
 				}
 			}
 		} catch (IOException e) {
-//			System.out.println("==> IOException occurred");
+			System.out.println("==> IOException occurred");
 			e.printStackTrace();
+			throw new IllegalArgumentException("Could not read file due to IO error: " + filepath, e);
 		}
 
 		if (numbersList.size() == 0) {

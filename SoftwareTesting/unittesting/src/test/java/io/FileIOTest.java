@@ -312,8 +312,6 @@ public class FileIOTest {
         }
     }
 
-
-
     @Test
     public void testReadFileWithSingleLine() throws Exception {
         File tempFile = File.createTempFile("test", ".txt");
@@ -357,30 +355,45 @@ public class FileIOTest {
         }
     }
 
-    @Test
-    public void testIOExceptionDuringRead() throws Exception {
-        File tempFile = File.createTempFile("test_io_exception", ".txt");
-        tempFile.deleteOnExit();
-        try (FileWriter writer = new FileWriter(tempFile)) {
-            writer.write("123");
-        }
+//    @Test
+//    public void testIOExceptionDuringRead() throws Exception {
+//        File tempFile = File.createTempFile("test_io_exception", ".txt");
+//        tempFile.deleteOnExit();
+//        try (FileWriter writer = new FileWriter(tempFile)) {
+//            writer.write("123");
+//        }
+//
+//        // Try to simulate IOException by removing read permission (Linux/macOS)
+//        tempFile.setReadable(false, false);
+//
+//        FileIO fileIO = new FileIO();
+//
+//        try {
+//            fileIO.readFile(tempFile.getAbsolutePath());
+//            fail("Expected IllegalArgumentException due to IOException");
+//        } catch (IllegalArgumentException e) {
+//            assertEquals("Given file is empty", e.getMessage());
+//
+//            // ✅ Confirm printStackTrace() ran (error was printed)
+//            assertTrue(systemErrRule.getLog().contains("java.io.FileNotFoundException") ||
+//                    systemErrRule.getLog().contains("java.io.IOException"));
+//        } finally {
+//            tempFile.setReadable(true, false);  // Restore permission
+//        }
+//    }
 
-        // Try to simulate IOException by removing read permission (Linux/macOS)
-        tempFile.setReadable(false, false);
+    @Test
+    public void testIOExceptionDuringRead() {
+        // Point to a directory instead of a file
+        File directory = new File(System.getProperty("java.io.tmpdir"));
 
         FileIO fileIO = new FileIO();
 
         try {
-            fileIO.readFile(tempFile.getAbsolutePath());
+            fileIO.readFile(directory.getAbsolutePath());
             fail("Expected IllegalArgumentException due to IOException");
         } catch (IllegalArgumentException e) {
-            assertEquals("Given file is empty", e.getMessage());
-
-            // ✅ Confirm printStackTrace() ran (error was printed)
-            assertTrue(systemErrRule.getLog().contains("java.io.FileNotFoundException") ||
-                    systemErrRule.getLog().contains("java.io.IOException"));
-        } finally {
-            tempFile.setReadable(true, false);  // Restore permission
+            assertTrue(e.getMessage().contains("Could not read file due to IO error"));
         }
     }
 
